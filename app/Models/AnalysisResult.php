@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\AnalysisResult
@@ -13,19 +16,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property string $result
  * @property float $accuracy
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult query()
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereAccuracy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereResult($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereSentence($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AnalysisResult whereUserId($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|AnalysisResult newModelQuery()
+ * @method static Builder|AnalysisResult newQuery()
+ * @method static Builder|AnalysisResult query()
+ * @method static Builder|AnalysisResult whereAccuracy($value)
+ * @method static Builder|AnalysisResult whereCreatedAt($value)
+ * @method static Builder|AnalysisResult whereId($value)
+ * @method static Builder|AnalysisResult whereResult($value)
+ * @method static Builder|AnalysisResult whereSentence($value)
+ * @method static Builder|AnalysisResult whereUpdatedAt($value)
+ * @method static Builder|AnalysisResult whereUserId($value)
+ * @mixin Eloquent
  */
 class AnalysisResult extends Model
 {
