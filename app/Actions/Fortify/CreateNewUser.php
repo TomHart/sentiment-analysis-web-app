@@ -3,50 +3,67 @@
 namespace App\Actions\Fortify;
 
 use App\Models\Brain;
+use App\Models\Team;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Throwable;
 
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
     /**
-     * Validate and create a newly registered user.
+     * Create a newly registered user.
      *
      * @param array $input
      * @return User
      * @throws ValidationException
+     * @throws Throwable
      */
     public function create(array $input): User
     {
-        Validator::make(
-            $input,
-            [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => $this->passwordRules(),
-                'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-            ]
-        )->validate();
+        Validator::make($input, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => $this->passwordRules(),
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        ])->validate();
 
-        $user = User::create(
-            [
+        return DB::transaction(function () use ($input) {
+            return tap(User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-            ]
-        );
+            ]), function (User $user) {
 
-        $defaultBrain = Brain::where('name', 'Default Brain')->first();
+                $defaultBrain = Brain::where('name', 'Default Brain')->first();
 
-        if ($defaultBrain) {
-            $user->brains()->save($defaultBrain);
-        }
+                if ($defaultBrain) {
+                    $user->brains()->save($defaultBrain);
+                }
 
-        return $user;
+                $this->createTeam($user);
+            });
+        });
+    }
+
+    /**
+     * Create a personal team for the user.
+     *
+     * @param User $user
+     * @return void
+     */
+    protected function createTeam(User $user)
+    {
+        $user->ownedTeams()->save(Team::forceCreate([
+            'user_id' => $user->id,
+            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'personal_team' => true,
+        ]));
     }
 }
