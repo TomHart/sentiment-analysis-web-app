@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -22,6 +23,8 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $brains_count
  * @property-read Collection|Word[] $words
  * @property-read int|null $words_count
+ * @property-read Collection|Sentence[] $sentences
+ * @property-read int|null $sentences_count
  * @method static Builder|Brain newModelQuery()
  * @method static Builder|Brain newQuery()
  * @method static Builder|Brain query()
@@ -55,5 +58,14 @@ class Brain extends Model
     public function words(): BelongsToMany
     {
         return $this->belongsToMany(Word::class);
+    }
+
+    /**
+     * The sentences this brain knows about.
+     * @return HasMany
+     */
+    public function sentences(): HasMany
+    {
+        return $this->hasMany(Sentence::class);
     }
 }
