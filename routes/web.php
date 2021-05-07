@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-use App\Models\Brain;
+use App\Http\Controllers\BrainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,19 @@ Route::get(
     }
 );
 
-Route::middleware(['auth:sanctum', 'verified'])->get(
-    '/dashboard',
-    function () {
-        return view('dashboard');
-    }
-)->name('dashboard');
+
+Route
+    ::middleware(['auth:sanctum', 'verified'])
+    ->group(
+        static function () {
+
+            Route::get(
+                '/dashboard',
+                function () {
+                    return view('dashboard');
+                }
+            )->name('dashboard');
+
+            Route::resource('brains', BrainController::class);
+        }
+    );

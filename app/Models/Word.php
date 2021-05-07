@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -6,6 +7,8 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -31,4 +34,20 @@ use Illuminate\Support\Carbon;
 class Word extends Model
 {
     use HasFactory;
+
+    protected $hidden = ['created_at', 'updated_at'];
+
+    public function sentence(): BelongsTo
+    {
+        return $this->belongsTo(Sentence::class);
+    }
+
+    /**
+     * The brains this words belongs to.
+     * @return BelongsToMany
+     */
+    public function brains(): BelongsToMany
+    {
+        return $this->belongsToMany(Brain::class);
+    }
 }
