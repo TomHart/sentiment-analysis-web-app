@@ -35,8 +35,6 @@ class Sentence extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['created_at', 'updated_at'];
-
     public function brain(): BelongsTo
     {
         return $this->belongsTo(Brain::class);

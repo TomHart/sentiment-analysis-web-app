@@ -87,8 +87,9 @@ class DatabaseBrainTest extends TestCase
         ];
 
 
-        static::assertSame($expectedSentences, $sentences->toArray());
-        static::assertSame($expectedWords, $words->toArray());
+        // For ignoring timestamps
+        static::assertDiffEmpty($expectedSentences, $sentences->toArray());
+        static::assertDiffEmpty($expectedWords, $words->toArray());
 
         // Assert the brain contains the same words, this method ignores the pivot keys
         static::assertDiffEmpty($expectedWords, $this->defaultBrain->words->toArray());

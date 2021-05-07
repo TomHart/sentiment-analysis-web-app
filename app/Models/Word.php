@@ -39,8 +39,6 @@ class Word extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['created_at', 'updated_at'];
-
     public function sentence(): BelongsTo
     {
         return $this->belongsTo(Sentence::class);
