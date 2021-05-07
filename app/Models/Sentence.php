@@ -29,6 +29,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Sentence whereSentiment($value)
  * @method static Builder|Sentence whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Brain $brain
  */
 class Sentence extends Model
 {

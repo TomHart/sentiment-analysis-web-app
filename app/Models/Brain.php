@@ -30,6 +30,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Brain whereName($value)
  * @method static Builder|Brain whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Collection|User[] $users
+ * @property-read int|null $users_count
  */
 class Brain extends Model
 {

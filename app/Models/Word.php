@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,6 +31,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Word whereUpdatedAt($value)
  * @method static Builder|Word whereWord($value)
  * @mixin Eloquent
+ * @property-read Collection|Brain[] $brains
+ * @property-read int|null $brains_count
+ * @property-read Sentence $sentence
  */
 class Word extends Model
 {
