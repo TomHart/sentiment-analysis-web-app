@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\TwoFactorAuthenticationForm;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Http\Livewire\TwoFactorAuthenticationForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 

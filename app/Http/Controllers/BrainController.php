@@ -23,7 +23,7 @@ class BrainController extends Controller
         /** @var User $user */
         $user = Auth::user();
 
-        return view('brains.index', [
+        return view('brains.new-index', [
             'brains' => $user->brains
         ]);
     }
