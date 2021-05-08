@@ -15,11 +15,12 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
-use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\NewAccessToken;
 
 /**
  * Class User
@@ -122,5 +123,26 @@ class User extends Authenticatable implements MustVerifyEmail
     public function brains(): BelongsToMany
     {
         return $this->belongsToMany(Brain::class);
+    }
+
+    /**
+     * Create a new personal access token for the user.
+     *
+     * @param string $name
+     * @param int $brainId
+     * @param array $abilities
+     * @return NewAccessToken
+     */
+    public function createToken(string $name, int $brainId, array $abilities = ['*']): NewAccessToken
+    {
+        /** @var PersonalAccessToken $token */
+        $token = $this->tokens()->create([
+            'name' => $name,
+            'token' => hash('sha256', $plainTextToken = Str::random(40)),
+            'abilities' => $abilities,
+            'brain_id' => $brainId,
+        ]);
+
+        return new NewAccessToken($token, $token->getKey().'|'.$plainTextToken);
     }
 }
