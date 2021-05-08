@@ -36,15 +36,17 @@
             @endif
 
             <div class="col-span-6">
-                <x-jet-label for="brain" value="{{ __('Associated Brain') }}"></x-jet-label>
+                <x-jet-label for="brain_id" value="{{ __('Associated Brain') }}"></x-jet-label>
 
-                <select id="brain" name="brain">
+                <select class="border-gray-300 rounded-md" id="brain_id" name="brain_id"
+                        wire:model.defer="createApiTokenForm.brain_id">
                     @foreach($this->user->brains->sortBy('name') as $brain)
                         <option value="{{$brain->id}}">
                             {{$brain->name}}
                         </option>
                     @endforeach
                 </select>
+                <x-jet-input-error for="brain_id" class="mt-2"></x-jet-input-error>
             </div>
         </x-slot>
 
@@ -82,21 +84,21 @@
                                     {{ $token->name }}
                                 </div>
 
-                                <div>
-                                    {{ $token->brain->name }}
-                                </div>
-
                                 <div class="flex items-center">
                                     @if ($token->last_used_at)
                                         <div class="text-sm text-gray-400">
                                             {{ __('Last used') }} {{ $token->last_used_at->diffForHumans() }}
                                         </div>
+                                    @else
+                                        <div class="text-sm text-gray-400">
+                                            {{ __('Never used') }}
+                                        </div>
                                     @endif
 
                                     @if (Laravel\Jetstream\Jetstream::hasPermissions())
                                         <button class="cursor-pointer ml-6 text-sm text-gray-400 underline"
-                                                wire:click="manageApiTokenPermissions({{ $token->id }})">
-                                            {{ __('Permissions') }}
+                                                wire:click="manageTokenPermissions({{ $token }})">
+                                            {{ __('Settings') }}
                                         </button>
                                     @endif
 
@@ -141,10 +143,12 @@
     <!-- API Token Permissions Modal -->
     <x-jet-dialog-modal wire:model="managingApiTokenPermissions">
         <x-slot name="title">
-            {{ __('API Token Permissions') }}
+            {{ __('Update Token Settings') }}
         </x-slot>
 
         <x-slot name="content">
+            <x-jet-label class="mb-3" value="{{ __('Permissions') }}"/>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
                     <label class="flex items-center">
@@ -152,6 +156,22 @@
                         <span class="ml-2 text-sm text-gray-600">{{ $permission }}</span>
                     </label>
                 @endforeach
+            </div>
+
+            <div class="col-span-6">
+                <x-jet-label class="my-3" for="update_brain_id" value="{{ __('Associated Brain') }}"></x-jet-label>
+
+                <select class="border-gray-300 rounded-md" id="update_brain_id" name="update_brain_id"
+                        wire:model.defer="updateApiTokenForm.brain_id">
+                    @foreach($this->user->brains->sortBy('name') as $brain)
+                        <option
+                            value="{{$brain->id}}"
+                        >
+                            {{$brain->name}}
+                        </option>
+                    @endforeach
+                </select>
+                <x-jet-input-error for="brain_id" class="mt-2"/>
             </div>
         </x-slot>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnalysisRequest;
+use App\Models\PersonalAccessToken;
 use App\Models\User;
 use App\SentimentAnalysis\DatabaseBrain;
 use App\SentimentAnalysis\Memories\DatabaseLoader;
@@ -25,7 +26,10 @@ class SentimentAnalysisController extends Controller
     {
         /** @var User $user */
         $user = $request->user();
-        $brain = $user->brains->first();
+
+        /** @var PersonalAccessToken $token */
+        $token = $user->currentAccessToken();
+        $brain = $token->brain;
 
         $brain = new DatabaseBrain($brain, new DatabaseLoader($brain));
 

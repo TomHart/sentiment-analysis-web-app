@@ -12,7 +12,6 @@ use App\Actions\Jetstream\RemoveTeamMember;
 use App\Actions\Jetstream\UpdateTeamName;
 use App\View\Components\ApiTokenManager;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Jetstream\Features;
 use Laravel\Jetstream\Jetstream;
 use Livewire\Livewire;
 
@@ -29,9 +28,7 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        if (Features::hasApiFeatures()) {
-            Livewire::component('api.api-token-manager', ApiTokenManager::class);
-        }
+        Livewire::component('api-token-manager', ApiTokenManager::class);
     }
 
     /**
