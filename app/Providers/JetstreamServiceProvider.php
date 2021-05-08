@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Providers;
 
@@ -9,9 +10,16 @@ use App\Actions\Jetstream\DeleteUser;
 use App\Actions\Jetstream\InviteTeamMember;
 use App\Actions\Jetstream\RemoveTeamMember;
 use App\Actions\Jetstream\UpdateTeamName;
+use App\View\Components\ApiTokenManager;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Jetstream\Features;
 use Laravel\Jetstream\Jetstream;
+use Livewire\Livewire;
 
+/**
+ * Class JetstreamServiceProvider
+ * @package App\Providers
+ */
 class JetstreamServiceProvider extends ServiceProvider
 {
     /**
@@ -19,9 +27,11 @@ class JetstreamServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        if (Features::hasApiFeatures()) {
+            Livewire::component('api.api-token-manager', ApiTokenManager::class);
+        }
     }
 
     /**
@@ -29,7 +39,7 @@ class JetstreamServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->configurePermissions();
 
@@ -47,7 +57,7 @@ class JetstreamServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function configurePermissions()
+    protected function configurePermissions(): void
     {
         Jetstream::defaultApiTokenPermissions(['read']);
 
