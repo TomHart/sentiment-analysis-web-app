@@ -21,7 +21,6 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\NewAccessToken;
-use Laravel\Sanctum\PersonalAccessToken;
 
 /**
  * Class User
@@ -136,6 +135,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function createToken(string $name, int $brainId, array $abilities = ['*']): NewAccessToken
     {
+        /** @var PersonalAccessToken $token */
         $token = $this->tokens()->create([
             'name' => $name,
             'token' => hash('sha256', $plainTextToken = Str::random(40)),
