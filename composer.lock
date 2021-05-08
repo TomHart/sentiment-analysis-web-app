@@ -5297,16 +5297,16 @@
         },
         {
             "name": "tomhart/sentiment-analysis",
-            "version": "1.0.2",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TomHart/sentiment-analysis.git",
-                "reference": "b2b38c6feb40913286be7278a54f65d351fc1674"
+                "reference": "2c5f2f5a234fb5c067938b1fc411beba7d23081c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TomHart/sentiment-analysis/zipball/b2b38c6feb40913286be7278a54f65d351fc1674",
-                "reference": "b2b38c6feb40913286be7278a54f65d351fc1674",
+                "url": "https://api.github.com/repos/TomHart/sentiment-analysis/zipball/2c5f2f5a234fb5c067938b1fc411beba7d23081c",
+                "reference": "2c5f2f5a234fb5c067938b1fc411beba7d23081c",
                 "shasum": ""
             },
             "require-dev": {
@@ -5331,9 +5331,9 @@
             "description": "S",
             "support": {
                 "issues": "https://github.com/TomHart/sentiment-analysis/issues",
-                "source": "https://github.com/TomHart/sentiment-analysis/tree/1.0.2"
+                "source": "https://github.com/TomHart/sentiment-analysis/tree/1.0.5"
             },
-            "time": "2021-05-07T15:14:29+00:00"
+            "time": "2021-05-07T21:46:29+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
