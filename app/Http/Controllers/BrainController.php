@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Auth;
 use Illuminate\Contracts\View\View;
 
 /**
@@ -20,11 +18,8 @@ class BrainController extends Controller
      */
     public function index(): View
     {
-        /** @var User $user */
-        $user = Auth::user();
-
-        return view('brains.new-index', [
-            'brains' => $user->brains
+        return view('brains.index', [
+            'brains' => $this->getUser()->brains
         ]);
     }
 

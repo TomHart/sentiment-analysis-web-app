@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\BrainController;
+use App\Http\Controllers\Dashboard\NotificationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +37,7 @@ Route
             )->name('dashboard');
 
             Route::resource('brains', BrainController::class);
+
+            Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications');
         }
     );

@@ -32,6 +32,7 @@ class SentimentAnalysisController extends Controller
         $brain = $token->brain;
 
         $brain = new DatabaseBrain($brain, new DatabaseLoader($brain));
+        //dd($brain->getSentenceCount(), $brain->wordType, $brain->sentenceType, $brain->getSentiments());
 
         $analyser = new Analyser();
         $analyser->setBrain($brain);

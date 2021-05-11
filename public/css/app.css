@@ -32713,6 +32713,26 @@ select {
   }
 }
 
+@-webkit-keyframes swing {
+  0%,100% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
+@keyframes swing {
+  0%,100% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
 .animate-none {
   -webkit-animation: none;
           animation: none;
@@ -32736,6 +32756,11 @@ select {
 .animate-bounce {
   -webkit-animation: bounce 1s infinite;
           animation: bounce 1s infinite;
+}
+
+.animate-swing {
+  -webkit-animation: swing 1s infinite;
+          animation: swing 1s infinite;
 }
 
 .mix-blend-normal {
@@ -65319,6 +65344,11 @@ select {
             animation: bounce 1s infinite;
   }
 
+  .sm\:animate-swing {
+    -webkit-animation: swing 1s infinite;
+            animation: swing 1s infinite;
+  }
+
   .sm\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -97807,6 +97837,11 @@ select {
   .md\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .md\:animate-swing {
+    -webkit-animation: swing 1s infinite;
+            animation: swing 1s infinite;
   }
 
   .md\:mix-blend-normal {
@@ -130299,6 +130334,11 @@ select {
             animation: bounce 1s infinite;
   }
 
+  .lg\:animate-swing {
+    -webkit-animation: swing 1s infinite;
+            animation: swing 1s infinite;
+  }
+
   .lg\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -162789,6 +162829,11 @@ select {
             animation: bounce 1s infinite;
   }
 
+  .xl\:animate-swing {
+    -webkit-animation: swing 1s infinite;
+            animation: swing 1s infinite;
+  }
+
   .xl\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -195277,6 +195322,11 @@ select {
   .\32xl\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .\32xl\:animate-swing {
+    -webkit-animation: swing 1s infinite;
+            animation: swing 1s infinite;
   }
 
   .\32xl\:mix-blend-normal {

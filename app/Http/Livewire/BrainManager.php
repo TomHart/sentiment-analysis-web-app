@@ -138,6 +138,6 @@ class BrainManager extends Component
      */
     public function render(): View
     {
-        return view('brains.brain-manager');
+        return view('livewire.brain.brain-manager');
     }
 }

@@ -1,0 +1,266 @@
+PHP Warning:  simplexml_load_string(): Entity: line 7655: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 7655: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             The scraper is fierce and lets ice on the window know whos boss! ME in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             The scraper is fierce and lets ice on the window know whos boss! ME in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                                                                      ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                                                                      ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 7655: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 7655: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():        The scraper is fierce and lets ice on the window know whos boss! ME that in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():        The scraper is fierce and lets ice on the window know whos boss! ME that in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                                                                                ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                                                                                ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                       ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                       ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                            ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                            ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                                  ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                                  ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                                         ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                                         ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 29482: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             Range: 200, 2K, 20K, 200K, 2M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                                              ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                                              ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string(): Entity: line 29484: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string(): Entity: line 29484: parser error : PCDATA invalid Char value 26 in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():             Range: 20M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():             Range: 20M in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+PHP Warning:  simplexml_load_string():                       ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+PHP Stack trace:
+PHP   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+PHP   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+Warning: simplexml_load_string():                       ^ in /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php on line 11
+
+Call Stack:
+    0.0006     399456   1. {main}() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:0
+    0.0030    2247216   2. simplexml_load_string() /Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:11
+
+/Users/thr15/Developmemt/Boost/sentiment_analysis/web-app/automotive/parse.php:13:
+bool(false)

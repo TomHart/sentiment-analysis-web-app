@@ -43,6 +43,7 @@ use Laravel\Sanctum\NewAccessToken;
  * @property-read Team|null $currentTeam
  * @property-read string $profile_photo_url
  * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
+ * @property-read DatabaseNotificationCollection|DatabaseNotification[] $unreadNotifications
  * @property-read int|null $notifications_count
  * @property-read Collection|Team[] $ownedTeams
  * @property-read int|null $owned_teams_count

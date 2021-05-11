@@ -17,8 +17,10 @@ use TomHart\SentimentAnalysis\Memories\NoopLoader;
  */
 class DatabaseBrain extends AIBrain
 {
+    /** @var Brain  */
     private Brain $brain;
 
+    /** @var Sentence  */
     private Sentence $currentSentence;
 
     /**
