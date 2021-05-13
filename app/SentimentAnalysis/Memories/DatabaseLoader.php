@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\SentimentAnalysis\Memories;
 
 use App\Models\Brain;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use TomHart\SentimentAnalysis\Brain\AbstractBrain;
 use TomHart\SentimentAnalysis\Memories\LoaderInterface;
 
@@ -31,15 +31,34 @@ class DatabaseLoader implements LoaderInterface
      */
     public function getSentiments(): array
     {
-        $words = $this
-            ->brain
-            ->words
-            ->groupBy('word')
-            ->map(static function (Collection $data) {
-                return AbstractBrain::format($data->countBy('sentiment')->toArray());
-            });
+        $sql = 'select
+                    `word`,
+                    `sentiment`,
+                    count(words.id) as total
+                from
+                     `words`
+                inner join
+                    `brain_word`
+                        on `words`.`id` = `brain_word`.`word_id`
+                        and `brain_word`.`brain_id` = ?
+                group by
+                    `word`, `sentiment`';
 
-        return $words->toArray();
+        $data = DB::select(DB::raw($sql), [$this->brain->id]);
+
+        $response = [];
+
+        foreach ($data as $word) {
+            if (!isset($response[$word->word])) {
+                $response[$word->word] = AbstractBrain::format([]);
+            }
+
+            $response[$word->word] = array_merge($response[$word->word], [
+                $word->sentiment => (int)$word->total
+            ]);
+        }
+
+        return $response;
     }
 
     /**
@@ -47,7 +66,18 @@ class DatabaseLoader implements LoaderInterface
      */
     public function getWordType(): array
     {
-        return $this->brain->words->countBy('sentiment')->toArray();
+        return $this->brain
+            ->words()
+            ->select('sentiment', DB::raw('count(*) as total'))
+            ->groupBy('sentiment')
+            ->get()
+            ->mapWithKeys(static function ($data) {
+                return [
+                    $data->sentiment => (int)$data->total
+                ];
+            })
+            ->sortKeysDesc()
+            ->toArray();
     }
 
     /**
@@ -55,6 +85,17 @@ class DatabaseLoader implements LoaderInterface
      */
     public function getSentenceType(): array
     {
-        return $this->brain->sentences->countBy('sentiment')->toArray();
+        return $this->brain
+            ->sentences()
+            ->select('sentiment', DB::raw('count(*) as total'))
+            ->groupBy('sentiment')
+            ->get()
+            ->mapWithKeys(static function ($data) {
+                return [
+                    $data->sentiment => (int)$data->total
+                ];
+            })
+            ->sortKeysDesc()
+            ->toArray();
     }
 }

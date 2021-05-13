@@ -25,36 +25,36 @@ class DatabaseLoaderTest extends TestCase
     public function testGetSentiments(): void
     {
         $expectedResult = [
-            'this' => [
+            'awesome' => [
                 'positive' => 1,
-                'negative' => 1,
+                'negative' => 0,
             ],
-            'is' => [
-                'positive' => 1,
+            'bad' => [
+                'positive' => 0,
                 'negative' => 1,
             ],
             'great' => [
                 'positive' => 1,
                 'negative' => 0,
             ],
-            'that' => [
+            'is' => [
                 'positive' => 1,
                 'negative' => 1,
-            ],
-            'was' => [
-                'positive' => 1,
-                'negative' => 1,
-            ],
-            'awesome' => [
-                'positive' => 1,
-                'negative' => 0,
             ],
             'terrible' => [
                 'positive' => 0,
                 'negative' => 1,
             ],
-            'bad' => [
-                'positive' => 0,
+            'that' => [
+                'positive' => 1,
+                'negative' => 1,
+            ],
+            'this' => [
+                'positive' => 1,
+                'negative' => 1,
+            ],
+            'was' => [
+                'positive' => 1,
                 'negative' => 1,
             ],
         ];

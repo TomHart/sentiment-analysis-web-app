@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnalysisRequest;
+use App\Models\AnalysisResult;
 use App\Models\PersonalAccessToken;
 use App\Models\User;
 use App\SentimentAnalysis\DatabaseBrain;
@@ -32,11 +33,20 @@ class SentimentAnalysisController extends Controller
         $brain = $token->brain;
 
         $brain = new DatabaseBrain($brain, new DatabaseLoader($brain));
-        //dd($brain->getSentenceCount(), $brain->wordType, $brain->sentenceType, $brain->getSentiments());
 
         $analyser = new Analyser();
         $analyser->setBrain($brain);
 
-        return response($analyser->analyse($request->input('text')));
+        $result = $analyser->analyse($request->input('text'));
+
+        $analysisResult = new AnalysisResult();
+        $analysisResult->sentence = $request->input('text');
+        $analysisResult->brain()->associate($token->brain);
+        $analysisResult->result = $result->getResult();
+        $analysisResult->positive_accuracy = $result->getPositiveAccuracy();
+        $analysisResult->negative_accuracy = $result->getNegativeAccuracy();
+        $analysisResult->save();
+
+        return response($result);
     }
 }

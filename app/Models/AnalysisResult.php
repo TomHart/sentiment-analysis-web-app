@@ -6,6 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
@@ -13,9 +14,7 @@ use Illuminate\Support\Carbon;
  *
  * @property int $id
  * @property string $sentence
- * @property int $user_id
  * @property string $result
- * @property float $accuracy
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|AnalysisResult newModelQuery()
@@ -29,8 +28,23 @@ use Illuminate\Support\Carbon;
  * @method static Builder|AnalysisResult whereUpdatedAt($value)
  * @method static Builder|AnalysisResult whereUserId($value)
  * @mixin Eloquent
+ * @property int $brain_id
+ * @property float $positive_accuracy
+ * @property float $negative_accuracy
+ * @method static Builder|AnalysisResult whereBrainId($value)
+ * @method static Builder|AnalysisResult whereNegativeAccuracy($value)
+ * @method static Builder|AnalysisResult wherePositiveAccuracy($value)
+ * @property-read Brain $brain
  */
 class AnalysisResult extends Model
 {
     use HasFactory;
+
+    /**
+     * @return BelongsTo
+     */
+    public function brain(): BelongsTo
+    {
+        return $this->belongsTo(Brain::class);
+    }
 }

@@ -35,6 +35,8 @@ use Illuminate\Support\Carbon;
  * @mixin Eloquent
  * @property-read Collection|User[] $users
  * @property-read int|null $users_count
+ * @property-read Collection|AnalysisResult[] $results
+ * @property-read int|null $results_count
  */
 class Brain extends Model
 {
@@ -67,5 +69,13 @@ class Brain extends Model
     public function sentences(): HasMany
     {
         return $this->hasMany(Sentence::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function results(): HasMany
+    {
+        return $this->hasMany(AnalysisResult::class);
     }
 }

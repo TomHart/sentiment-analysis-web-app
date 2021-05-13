@@ -18,8 +18,8 @@ class BrainController extends Controller
      */
     public function index(): View
     {
-        return view('brains.index', [
-            'brains' => $this->getUser()->brains
+        return view('dashboard.brains.index', [
+            'brains' => $this->getUser()->brains()->with('results')->get()
         ]);
     }
 

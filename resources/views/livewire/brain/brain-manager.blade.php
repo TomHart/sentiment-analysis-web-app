@@ -58,6 +58,10 @@
                                 </div>
 
                                 <div class="flex items-center">
+                                    <div>
+                                        Usage: {{$brain->results->count()}}
+                                    </div>
+
                                     <button
                                         class="cursor-pointer ml-6 text-sm text-red-500"
                                         wire:click="confirmBrainDeletion({{ $brain->id }})">
