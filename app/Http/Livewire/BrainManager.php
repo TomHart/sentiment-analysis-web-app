@@ -18,14 +18,6 @@ use Livewire\Component;
  */
 class BrainManager extends Component
 {
-    /**
-     * The create brain form state.
-     *
-     * @var array
-     */
-    public array $createBrainForm = [
-        'name' => '',
-    ];
 
     /** @var bool */
     public bool $confirmingBrainDeletion = false;
@@ -58,32 +50,6 @@ class BrainManager extends Component
 
     /** @var ?int */
     public ?int $brainIdBeingDeleted = null;
-
-    /**
-     * Create a new brain.
-     *
-     * @return void
-     * @throws ValidationException
-     */
-    public function createBrain(): void
-    {
-        $this->resetErrorBag();
-
-        Validator::make([
-            'name' => $this->createBrainForm['name'],
-        ], [
-            'name' => ['required', 'string', 'max:255'],
-        ])->validateWithBag(__METHOD__);
-
-        $brain = new Brain();
-        $brain->name = $this->createBrainForm['name'];
-        $brain->save();
-        $brain->users()->save($this->getUserProperty());
-
-        $this->createBrainForm['name'] = '';
-
-        $this->emit('created');
-    }
 
     /**
      * Get the current user of the application.
