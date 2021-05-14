@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Actions\Jetstream;
 
 use App\Models\Team;
+use App\Models\User;
 use Closure;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
@@ -24,8 +25,8 @@ class AddTeamMember implements AddsTeamMembers
     /**
      * Add a new team member to the given team.
      *
-     * @param mixed $user
-     * @param mixed $team
+     * @param User $user
+     * @param Team $team
      * @param string $email
      * @param string|null $role
      * @return void
