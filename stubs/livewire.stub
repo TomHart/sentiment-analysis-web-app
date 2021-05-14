@@ -1,0 +1,22 @@
+<?php
+declare(strict_types=1);
+
+namespace [namespace];
+
+use App\Http\Livewire\BaseComponent;
+use Illuminate\View\View;
+
+/**
+ * Class [class]
+ * @package [namespace]
+ */
+class [class] extends BaseComponent
+{
+    /**
+     * @return View
+     */
+    public function render(): View
+    {
+        return view('[view]');
+    }
+}

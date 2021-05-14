@@ -20,6 +20,11 @@
 
             <!-- Training -->
             <livewire:brain.training-panel :brain="$brain"/>
+
+            <x-jet-section-border/>
+
+            <!-- Use -->
+            <livewire:brain.use-panel :brain="$brain"/>
         </div>
     </div>
 </x-app-layout>

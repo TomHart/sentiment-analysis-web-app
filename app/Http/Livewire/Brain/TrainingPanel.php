@@ -6,7 +6,6 @@ namespace App\Http\Livewire\Brain;
 use App\Http\Livewire\BaseComponent;
 use App\Jobs\TrainBrain;
 use App\Models\Brain;
-use App\Rules\HasAccessTo;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use JetBrains\PhpStorm\ArrayShape;

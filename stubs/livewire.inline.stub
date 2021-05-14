@@ -1,0 +1,22 @@
+<?php
+declare(strict_types=1);
+
+namespace [namespace];
+
+use App\Http\Livewire\BaseComponent;
+use Illuminate\View\View;
+
+class [class] extends BaseComponent
+{
+    /**
+     * @return string
+     */
+    public function render(): string
+    {
+        return <<<'blade'
+            <div>
+                {{-- [quote] --}}
+            </div>
+        blade;
+    }
+}
