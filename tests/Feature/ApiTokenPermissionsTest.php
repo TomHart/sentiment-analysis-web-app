@@ -23,7 +23,6 @@ class ApiTokenPermissionsTest extends TestCase
     {
         if (! Features::hasApiFeatures()) {
             self::markTestSkipped('API support is not enabled.');
-            return;
         }
 
         if (Features::hasTeamFeatures()) {

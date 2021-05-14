@@ -4,9 +4,6 @@ declare(strict_types=1);
 namespace App\Http\Livewire\Brain;
 
 use App\Http\Livewire\BaseComponent;
-use App\Models\Brain;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 /**
@@ -15,37 +12,27 @@ use Illuminate\View\View;
  */
 class CreatePanel extends BaseComponent
 {
-    /**
-     * The create brain form state.
-     *
-     * @var array
-     */
-    public array $createBrainForm = [
-        'name' => '',
+    /** @var string The brain name to make */
+    public string $name = '';
+
+    protected array $rules = [
+        'name' => ['required', 'min:8', 'max:255']
     ];
 
     /**
      * Create a new brain.
      *
      * @return void
-     * @throws ValidationException
      */
-    public function createBrain(): void
+    public function create(): void
     {
         $this->resetErrorBag();
 
-        Validator::make([
-            'name' => $this->createBrainForm['name'],
-        ], [
-            'name' => ['required', 'string', 'max:255'],
-        ])->validateWithBag(__METHOD__);
+        $this->getUserProperty()->brains()->create(
+            $this->validate()
+        );
 
-        $brain = new Brain();
-        $brain->name = $this->createBrainForm['name'];
-        $brain->save();
-        $brain->users()->save($this->getUserProperty());
-
-        $this->createBrainForm['name'] = '';
+        $this->name = '';
 
         $this->emit('created');
     }

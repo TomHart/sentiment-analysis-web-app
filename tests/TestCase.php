@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 /**
@@ -49,5 +50,13 @@ abstract class TestCase extends BaseTestCase
         }
 
         return $aReturn;
+    }
+
+    /**
+     * @return User
+     */
+    public function createUser(): User
+    {
+        return User::factory()->create();
     }
 }
