@@ -39,14 +39,16 @@ abstract class TestCase extends BaseTestCase
                     if (count($aRecursiveDiff)) {
                         $aReturn[$mKey] = $aRecursiveDiff;
                     }
-                } else {
-                    if ($mValue !== $aArray2[$mKey]) {
-                        $aReturn[$mKey] = $mValue;
-                    }
+                    continue;
                 }
-            } else {
-                $aReturn[$mKey] = $mValue;
+
+                if ($mValue !== $aArray2[$mKey]) {
+                    $aReturn[$mKey] = $mValue;
+                }
+                continue;
             }
+
+            $aReturn[$mKey] = $mValue;
         }
 
         return $aReturn;
