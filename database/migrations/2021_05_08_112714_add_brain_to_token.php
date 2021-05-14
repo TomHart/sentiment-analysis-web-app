@@ -39,7 +39,9 @@ class AddBrainToToken extends Migration
     public function down(): void
     {
         Schema::table('personal_access_tokens', static function (Blueprint $table) {
-            $table->dropForeign('personal_access_tokens_brain_id_foreign');
+            if (!app()->runningUnitTests()) {
+                $table->dropForeign('personal_access_tokens_brain_id_foreign');
+            }
             $table->dropColumn('brain_id');
         });
     }

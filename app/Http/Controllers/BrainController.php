@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Brain;
 use Illuminate\Contracts\View\View;
 
 /**
@@ -20,6 +21,19 @@ class BrainController extends Controller
     {
         return view('dashboard.brains.index', [
             'brains' => $this->getUser()->brains()->with('results')->get()
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Brain $brain
+     * @return View
+     */
+    public function show(Brain $brain): View
+    {
+        return view('dashboard.brains.show', [
+            'brain' => $brain
         ]);
     }
 
@@ -44,16 +58,6 @@ class BrainController extends Controller
 //        //
 //    }
 //
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param int $id
-//     * @return Response
-//     */
-//    public function show($id): Response
-//    {
-//        //
-//    }
 //
 //    /**
 //     * Show the form for editing the specified resource.

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Feature;
 
@@ -10,14 +11,19 @@ use Laravel\Jetstream\Features;
 use Livewire\Livewire;
 use Tests\TestCase;
 
+/**
+ * Class ApiTokenPermissionsTest
+ * @package Tests\Feature
+ */
 class ApiTokenPermissionsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_api_token_permissions_can_be_updated()
+    public function test_api_token_permissions_can_be_updated(): void
     {
         if (! Features::hasApiFeatures()) {
-            return $this->markTestSkipped('API support is not enabled.');
+            self::markTestSkipped('API support is not enabled.');
+            return;
         }
 
         if (Features::hasTeamFeatures()) {
@@ -39,11 +45,12 @@ class ApiTokenPermissionsTest extends TestCase
                             'delete',
                             'missing-permission',
                         ],
+                        'brain_id' => 1
                     ]])
                     ->call('updateApiToken');
 
-        $this->assertTrue($user->fresh()->tokens->first()->can('delete'));
-        $this->assertFalse($user->fresh()->tokens->first()->can('read'));
-        $this->assertFalse($user->fresh()->tokens->first()->can('missing-permission'));
+        self::assertTrue($user->fresh()->tokens->first()->can('delete'));
+        self::assertFalse($user->fresh()->tokens->first()->can('read'));
+        self::assertFalse($user->fresh()->tokens->first()->can('missing-permission'));
     }
 }

@@ -1,17 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Brain;
 
+use App\Http\Livewire\BaseComponent;
 use App\Jobs\TrainBrain;
 use App\Models\Brain;
-use App\Models\User;
 use App\Rules\HasAccessTo;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use JetBrains\PhpStorm\ArrayShape;
-use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Throwable;
@@ -22,11 +20,11 @@ use TomHart\SentimentAnalysis\SentimentType;
  * Class BrainTrainingForm
  * @package App\Http\Livewire
  */
-class BrainTrainingForm extends Component
+class TrainingPanel extends BaseComponent
 {
     use WithFileUploads;
 
-    public ?int $brainId = null;
+    public Brain $brain;
     public string $sentimentType = SentimentType::POSITIVE;
     /** @var string|TemporaryUploadedFile|null */
     public string|null|TemporaryUploadedFile $file = null;
@@ -38,10 +36,8 @@ class BrainTrainingForm extends Component
     {
         $this->validate();
 
-        $brain = Brain::find($this->brainId);
-        TrainBrain::dispatch($this->getUserProperty()->id, $brain, $this->sentimentType, $this->file->getRealPath());
+        TrainBrain::dispatch($this->getUserProperty()->id, $this->brain, $this->sentimentType, $this->file->getRealPath());
 
-        $this->brainId = null;
         $this->sentimentType = SentimentType::POSITIVE;
         $this->file = null;
 
@@ -49,31 +45,20 @@ class BrainTrainingForm extends Component
     }
 
     /**
-     * Get the current user of the application.
-     *
-     * @return User
-     */
-    public function getUserProperty(): User
-    {
-        return Auth::user();
-    }
-
-    /**
      * @return View
      */
     public function render(): View
     {
-        return view('livewire.brain.brain-training-form');
+        return view('livewire.brain.training-panel');
     }
 
     /**
      * @return array
      */
-    #[ArrayShape(['brainId' => 'array', 'sentimentType' => 'array', 'file' => 'string[]'])]
+    #[ArrayShape(['sentimentType' => 'array', 'file' => 'string[]'])]
     protected function rules(): array
     {
         return [
-            'brainId' => ['required', new HasAccessTo($this->getUserProperty(), 'brains')],
             'sentimentType' => ['required', Rule::in(Analyser::VALID_TYPES)],
             'file' => ['required', 'file']
         ];

@@ -14,7 +14,7 @@ class DefaultBrain extends Seeder
      */
     public function run()
     {
-        (new Brain)->where('name', 'Default Brain')->firstOrCreate(
+        (new Brain())->where('name', 'Default Brain')->firstOrCreate(
             [
                 'name' => 'Default Brain'
             ]

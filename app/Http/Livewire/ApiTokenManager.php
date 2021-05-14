@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\View\Components;
+namespace App\Http\Livewire;
 
 use App\Models\PersonalAccessToken;
 use Illuminate\Support\Facades\Validator;

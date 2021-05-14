@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('brains.index') }}" :active="request()->routeIs('brains.index')">
+                    <x-jet-nav-link href="{{ route('brains.index') }}" :active="request()->routeIs('brains.*')">
                         {{ __('Brains') }}
                     </x-jet-nav-link>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Jetstream;
 
+use Closure;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -72,7 +73,7 @@ class InviteTeamMember implements InvitesTeamMembers
                 $query->where('team_id', $team->id);
             })],
             'role' => Jetstream::hasRoles()
-                            ? ['required', 'string', new Role]
+                            ? ['required', 'string', new Role()]
                             : null,
         ]);
     }
@@ -82,7 +83,7 @@ class InviteTeamMember implements InvitesTeamMembers
      *
      * @param  mixed  $team
      * @param  string  $email
-     * @return \Closure
+     * @return Closure
      */
     protected function ensureUserIsNotAlreadyOnTeam($team, string $email)
     {

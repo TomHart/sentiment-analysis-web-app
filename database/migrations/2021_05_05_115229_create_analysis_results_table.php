@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use TomHart\SentimentAnalysis\Analyser\Analyser;
 
+/**
+ * Class CreateAnalysisResultsTable
+ */
 class CreateAnalysisResultsTable extends Migration
 {
     /**
@@ -12,19 +16,20 @@ class CreateAnalysisResultsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create(
             'analysis_results',
             function (Blueprint $table) {
                 $table->id();
                 $table->text('sentence');
-                $table->unsignedBigInteger('user_id')->index();
+                $table->unsignedBigInteger('brain_id')->index()->after('sentence')->default(3);
                 $table->enum('result', Analyser::VALID_TYPES)->index();
-                $table->float('accuracy');
+                $table->float('positive_accuracy', 20, 10)->default(0)->after('result');
+                $table->float('negative_accuracy', 20, 10)->default(0)->after('result');
                 $table->timestamps();
 
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('brain_id')->references('id')->on('brains');
             }
         );
     }
@@ -34,7 +39,7 @@ class CreateAnalysisResultsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('analysis_results');
     }

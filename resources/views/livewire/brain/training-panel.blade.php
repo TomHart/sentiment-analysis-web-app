@@ -9,19 +9,6 @@
 
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label class="mb-2" for="brain_id" value="{{ __('Brain to train') }}"></x-jet-label>
-
-            <select class="mb-2 border-gray-300 rounded-md" id="brain_id" name="brain_id"
-                    wire:model.defer="brainId">
-                <option value="null">--- Choose the brain to train ---</option>
-                @foreach($this->user->brains->sortBy('name') as $brain)
-                    <option value="{{$brain->id}}">
-                        {{$brain->name}}
-                    </option>
-                @endforeach
-            </select>
-            <x-jet-input-error for="brainId" class="mt-2"/>
-
             <x-jet-label class="mb-2" for="sentiment_type" value="{{ __('Sentiment Type') }}"></x-jet-label>
 
             <select class="mb-2 border-gray-300 rounded-md" id="sentiment_type" name="sentiment_type"

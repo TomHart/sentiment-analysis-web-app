@@ -7,7 +7,12 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            @livewire('brain-manager')
+
+            <!-- Create Brain Form -->
+            @livewire('brain.create-panel')
+
+            <!-- List Brains -->
+            @livewire('brain.list-panel')
         </div>
     </div>
 </x-app-layout>

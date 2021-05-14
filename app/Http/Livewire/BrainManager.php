@@ -18,9 +18,6 @@ use Livewire\Component;
  */
 class BrainManager extends Component
 {
-
-    /** @var bool */
-    public bool $confirmingBrainDeletion = false;
     /**
      * Indicates if the plain text token is being displayed to the user.
      *
@@ -48,9 +45,6 @@ class BrainManager extends Component
         'permissions' => [],
     ];
 
-    /** @var ?int */
-    public ?int $brainIdBeingDeleted = null;
-
     /**
      * Get the current user of the application.
      *
@@ -59,42 +53,6 @@ class BrainManager extends Component
     public function getUserProperty(): User
     {
         return Auth::user();
-    }
-
-    /**
-     * Confirm that the given brain should be deleted.
-     *
-     * @param int $brainId
-     * @return void
-     */
-    public function confirmBrainDeletion(int $brainId): void
-    {
-        $this->confirmingBrainDeletion = true;
-        $this->brainIdBeingDeleted = $brainId;
-    }
-
-    /**
-     * Delete the brain.
-     *
-     * @return void
-     */
-    public function deleteBrain(): void
-    {
-        $brain = $this->getUserProperty()
-            ->brains()
-            ->where('brains.id', $this
-                ->brainIdBeingDeleted)
-            ->firstOrFail();
-
-        if ($brain) {
-            $this->getUserProperty()->brains()->detach($brain);
-            $brain->delete();
-        }
-
-        $this->getUserProperty()->load('brains');
-
-        $this->brainIdBeingDeleted = null;
-        $this->confirmingBrainDeletion = false;
     }
 
     /**
