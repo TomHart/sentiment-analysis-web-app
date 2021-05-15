@@ -10,7 +10,7 @@
 
         <x-slot name="content">
             <div class="space-y-6">
-                <a wire:click="confirmBrainDeletion({{$this->brain->id}})"
+                <a wire:click="confirmDeletion({{$this->brain->id}})"
                    class="cursor-pointer ml-6 text-sm text-red-600">
                     {{ __('Delete') }}
                 </a>
@@ -21,7 +21,7 @@
 
 
     <!-- Delete Brain Confirmation Modal -->
-    <x-jet-confirmation-modal wire:model="confirmingBrainDeletion">
+    <x-jet-confirmation-modal wire:model="confirmingDeletion">
         <x-slot name="title">
             {{ __('Delete Brain') }}
         </x-slot>
@@ -31,12 +31,12 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('confirmingBrainDeletion')"
+            <x-jet-secondary-button wire:click="$toggle('confirmingDeletion')"
                                     wire:loading.attr="disabled">
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-danger-button class="ml-2" wire:click="deleteBrain" wire:loading.attr="disabled">
+            <x-jet-danger-button class="ml-2" wire:click="delete" wire:loading.attr="disabled">
                 {{ __('Delete') }}
             </x-jet-danger-button>
         </x-slot>

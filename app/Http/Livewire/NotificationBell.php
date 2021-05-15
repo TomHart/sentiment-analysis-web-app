@@ -13,9 +13,10 @@ class NotificationBell extends BaseComponent
 {
     public function render(): View
     {
+        $user = $this->getUserProperty();
         return view('livewire.notification-bell', [
-            'notifications' => $this->getUserProperty()->notifications,
-            'unreadNotifications' => $this->getUserProperty()->unreadNotifications
+            'notifications' => $user->notifications,
+            'unreadNotifications' => $user->unreadNotifications
         ]);
     }
 }

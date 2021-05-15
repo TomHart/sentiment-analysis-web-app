@@ -15,45 +15,39 @@ class DeletePanel extends BaseComponent
 {
     public Brain $brain;
     /** @var bool */
-    public bool $confirmingBrainDeletion = false;
-    /** @var int|null */
-    public ?int $brainIdBeingDeleted = null;
+    public bool $confirmingDeletion = false;
 
     /**
      * Confirm that the given brain should be deleted.
      *
-     * @param int $brainId
      * @return void
      */
-    public function confirmBrainDeletion(int $brainId): void
+    public function confirmDeletion(): void
     {
-        $this->confirmingBrainDeletion = true;
-        $this->brainIdBeingDeleted = $brainId;
+        $this->confirmingDeletion = true;
     }
-
 
     /**
      * Delete the brain.
      *
      * @returns void
      */
-    public function deleteBrain(): void
+    public function delete(): void
     {
-        $brain = $this->getUserProperty()
+        $user = $this->getUserProperty();
+        $brain = $user
             ->brains()
-            ->where('brains.id', $this
-                ->brainIdBeingDeleted)
+            ->where('brains.id', $this->brain->id)
             ->firstOrFail();
 
         if ($brain) {
-            $this->getUserProperty()->brains()->detach($brain);
+            $user->brains()->detach($brain);
             $brain->delete();
         }
 
-        $this->getUserProperty()->load('brains');
+        $user->load('brains');
 
-        $this->brainIdBeingDeleted = null;
-        $this->confirmingBrainDeletion = false;
+        $this->confirmingDeletion = false;
         $this->redirectRoute('brains.index');
     }
 

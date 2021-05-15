@@ -10,19 +10,25 @@ use Illuminate\View\View;
 
 /**
  * Class UsagePanel
+ * @property array monthlyUsage
  * @package App\Http\Livewire\Brain
  */
 class UsagePanel extends BaseComponent
 {
     public Brain $brain;
 
+    /**
+     * @return array
+     */
     public function getMonthlyUsageProperty(): array
     {
+        $dateClause = env('DB_CONNECTION') === 'sqlite' ? 'strftime("%m %Y", created_at)' : 'date_format(created_at, "%m %Y")';
+
         return $this->brain
             ->results()
             ->select(
                 DB::raw('count(analysis_results.id) as total'),
-                DB::raw("DATE_FORMAT(created_at,'%M %Y') as months")
+                DB::raw("$dateClause as months")
             )
             ->groupBy('months')
             ->orderByDesc('created_at')

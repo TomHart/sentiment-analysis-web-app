@@ -31,7 +31,7 @@ class TrainingPanel extends BaseComponent
     /**
      * @throws Throwable
      */
-    public function trainBrain(): void
+    public function train(): void
     {
         $this->validate();
 

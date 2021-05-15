@@ -14,14 +14,23 @@ use TomHart\SentimentAnalysis\Memories\LoaderInterface;
  */
 class DatabaseLoader implements LoaderInterface
 {
-
-    private Brain $brain;
+    private ?Brain $brain;
 
     /**
      * DatabaseLoader constructor.
+     * @param Brain|null $brain
+     */
+    public function __construct(Brain $brain = null)
+    {
+        if (!is_null($brain)) {
+            $this->setBrain($brain);
+        }
+    }
+
+    /**
      * @param Brain $brain
      */
-    public function __construct(Brain $brain)
+    public function setBrain(Brain $brain): void
     {
         $this->brain = $brain;
     }

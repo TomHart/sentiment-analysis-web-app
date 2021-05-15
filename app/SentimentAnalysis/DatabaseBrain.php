@@ -17,25 +17,34 @@ use TomHart\SentimentAnalysis\Memories\NoopLoader;
  */
 class DatabaseBrain extends AIBrain
 {
-    /** @var Brain  */
-    private Brain $brain;
+    private ?Brain $brain;
 
-    /** @var Sentence  */
+    /** @var Sentence */
     private Sentence $currentSentence;
 
     /**
      * DatabaseBrain constructor.
-     * @param Brain $brain
+     * @param Brain|null $brain
      * @param LoaderInterface|null $loader
      */
-    public function __construct(Brain $brain, LoaderInterface $loader = null)
+    public function __construct(Brain $brain = null, LoaderInterface $loader = null)
     {
-        $this->brain = $brain;
-        if(is_null($loader)){
+        if (is_null($loader)) {
             $loader = new NoopLoader();
         }
 
-        $this->loadMemories($loader);
+        if (!is_null($brain)) {
+            $this->setBrain($brain);
+            $this->loadMemories($loader);
+        }
+    }
+
+    /**
+     * @param Brain $brain
+     */
+    public function setBrain(Brain $brain): void
+    {
+        $this->brain = $brain;
     }
 
     /**

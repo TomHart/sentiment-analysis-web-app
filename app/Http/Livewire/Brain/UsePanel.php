@@ -5,23 +5,20 @@ namespace App\Http\Livewire\Brain;
 
 use App\Http\Livewire\BaseComponent;
 use App\Models\Brain;
-use App\SentimentAnalysis\DatabaseBrain;
-use App\SentimentAnalysis\Memories\DatabaseLoader;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\View\View;
-use TomHart\SentimentAnalysis\Analyser\Analyser;
+use TomHart\SentimentAnalysis\Analyser\AnalyserInterface;
 use TomHart\SentimentAnalysis\Analyser\AnalysisResult;
 
 /**
  * Class UsePanel
  * @package App\Http\Livewire\Brain
+ * @property null|AnalysisResult result
  */
 class UsePanel extends BaseComponent
 {
     public Brain $brain;
-
-    /** @var string The sentence to test. */
     public string $sentence = 'good example of a great sentence';
-    /** @var null|AnalysisResult */
     private ?AnalysisResult $result = null;
 
     /**
@@ -32,17 +29,15 @@ class UsePanel extends BaseComponent
         return $this->result;
     }
 
-    public function clearResult(): void
-    {
-        $this->result = null;
-    }
-
+    /**
+     * @return void
+     * @throws BindingResolutionException
+     */
     public function useBrain(): void
     {
-        $loader = new DatabaseLoader($this->brain);
-        $brain = new DatabaseBrain($this->brain, $loader);
-        $analyser = new Analyser();
-        $analyser->setBrain($brain);
+        $analyser = app()->make(AnalyserInterface::class, [
+            'brain' => $this->brain
+        ]);
 
         $this->result = $analyser->analyse($this->sentence);
     }
