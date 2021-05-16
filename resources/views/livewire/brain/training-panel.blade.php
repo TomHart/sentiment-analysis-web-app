@@ -1,4 +1,4 @@
-<x-jet-form-section submit="trainBrain">
+<x-jet-form-section submit="train">
     <x-slot name="title">
         {{ __('Train Brain') }}
     </x-slot>
@@ -42,7 +42,7 @@
             Checking File
         </div>
 
-        <div class="text-sm text-gray-600 mx-2" wire:loading wire:target="trainBrain">
+        <div class="text-sm text-gray-600 mx-2" wire:loading wire:target="train">
             Starting Training
         </div>
 

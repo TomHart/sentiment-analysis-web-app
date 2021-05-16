@@ -5,6 +5,7 @@ namespace App\Providers;
 
 use App\SentimentAnalysis\DatabaseBrain;
 use App\SentimentAnalysis\Memories\DatabaseLoader;
+use Dotenv\Loader\LoaderInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use JetBrains\PhpStorm\ArrayShape;
@@ -25,12 +26,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(BrainInterface::class, DatabaseBrain::class);
+
         $this->app->bind(AnalyserInterface::class, static function (
             Application $app,
             #[ArrayShape(['brain' => BrainInterface::class])] array $params
         ) {
-            $loader = new DatabaseLoader($params['brain']);
-            $brain = new DatabaseBrain($params['brain'], $loader);
+            /** @var DatabaseBrain $brain */
+            $brain = $app->make(BrainInterface::class, $params);
+            $brain->setBrain($params['brain']);
+
             $analyser = new Analyser();
             return $analyser->setBrain($brain);
         });

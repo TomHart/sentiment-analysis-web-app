@@ -9,7 +9,6 @@ use App\Notifications\TrainingFailed;
 use App\Notifications\TrainingFinished;
 use App\Notifications\TrainingStarted;
 use App\SentimentAnalysis\DatabaseBrain;
-use App\SentimentAnalysis\Memories\DatabaseLoader;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -17,6 +16,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
 use Throwable;
+use TomHart\SentimentAnalysis\Brain\BrainInterface;
 
 /**
  * Class TrainBrain
@@ -44,14 +44,14 @@ class TrainBrain implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param int $userId
+     * @param User $user
      * @param Brain $brain
      * @param string $sentimentType
      * @param string $filePath
      */
-    public function __construct(int $userId, Brain $brain, string $sentimentType, string $filePath)
+    public function __construct(User $user, Brain $brain, string $sentimentType, string $filePath)
     {
-        $this->user = User::findOrFail($userId);
+        $this->user = $user;
         $this->brain = $brain;
         $this->sentimentType = $sentimentType;
         $this->filePath = $filePath;
@@ -60,17 +60,18 @@ class TrainBrain implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param BrainInterface $brain
      * @return void
      * @throws Throwable
      */
-    public function handle(): void
+    public function handle(BrainInterface $brain): void
     {
         $this->user->notify(new TrainingStarted($this->brain->id, $this->sentimentType, $this->filePath));
 
-        $aiBrain = new DatabaseBrain($this->brain, new DatabaseLoader($this->brain));
-
         DB::beginTransaction();
-        $aiBrain->insertTrainingData($this->filePath, $this->sentimentType, 1000);
+        /** @var $brain DatabaseBrain */
+        $brain->setBrain($this->brain);
+        $brain->insertTrainingData($this->filePath, $this->sentimentType, 1000);
         DB::commit();
 
         $this->user->notify(new TrainingFinished($this->brain->id, $this->sentimentType, $this->filePath));

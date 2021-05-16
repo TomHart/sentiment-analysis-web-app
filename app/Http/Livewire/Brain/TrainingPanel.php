@@ -35,7 +35,7 @@ class TrainingPanel extends BaseComponent
     {
         $this->validate();
 
-        TrainBrain::dispatch($this->getUserProperty()->id, $this->brain, $this->sentimentType, $this->file->getRealPath());
+        TrainBrain::dispatch($this->getUserProperty(), $this->brain, $this->sentimentType, $this->file->getRealPath());
 
         $this->sentimentType = SentimentType::POSITIVE;
         $this->file = null;

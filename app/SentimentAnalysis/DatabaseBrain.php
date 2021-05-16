@@ -6,6 +6,7 @@ namespace App\SentimentAnalysis;
 use App\Models\Brain;
 use App\Models\Sentence;
 use App\Models\Word;
+use App\SentimentAnalysis\Memories\DatabaseLoader;
 use TomHart\SentimentAnalysis\Brain\Brain as AIBrain;
 use TomHart\SentimentAnalysis\Brain\BrainInterface;
 use TomHart\SentimentAnalysis\Memories\LoaderInterface;
@@ -34,17 +35,21 @@ class DatabaseBrain extends AIBrain
         }
 
         if (!is_null($brain)) {
-            $this->setBrain($brain);
+            $this->brain = $brain;
             $this->loadMemories($loader);
         }
     }
 
     /**
      * @param Brain $brain
+     * @return BrainInterface
      */
-    public function setBrain(Brain $brain): void
+    public function setBrain(Brain $brain): BrainInterface
     {
         $this->brain = $brain;
+        $loader = new DatabaseLoader($brain);
+        $this->loadMemories($loader);
+        return $this;
     }
 
     /**
