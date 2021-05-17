@@ -37,6 +37,8 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $users_count
  * @property-read Collection|AnalysisResult[] $results
  * @property-read int|null $results_count
+ * @property-read Collection|BrainConfigSetting[] $config
+ * @property-read int|null $config_count
  */
 class Brain extends Model
 {
@@ -77,5 +79,13 @@ class Brain extends Model
     public function results(): HasMany
     {
         return $this->hasMany(AnalysisResult::class);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function config(): BelongsToMany
+    {
+        return $this->belongsToMany(BrainConfigSetting::class, 'brain_config');
     }
 }
