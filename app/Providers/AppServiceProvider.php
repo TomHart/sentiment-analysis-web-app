@@ -4,8 +4,6 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\SentimentAnalysis\DatabaseBrain;
-use App\SentimentAnalysis\Memories\DatabaseLoader;
-use Dotenv\Loader\LoaderInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use JetBrains\PhpStorm\ArrayShape;
@@ -39,15 +37,5 @@ class AppServiceProvider extends ServiceProvider
             $analyser = new Analyser();
             return $analyser->setBrain($brain);
         });
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
     }
 }
