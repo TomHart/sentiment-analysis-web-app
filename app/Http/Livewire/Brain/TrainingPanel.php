@@ -31,11 +31,11 @@ class TrainingPanel extends BaseComponent
     /**
      * @throws Throwable
      */
-    public function trainBrain(): void
+    public function train(): void
     {
         $this->validate();
 
-        TrainBrain::dispatch($this->getUserProperty()->id, $this->brain, $this->sentimentType, $this->file->getRealPath());
+        TrainBrain::dispatch($this->getUserProperty(), $this->brain, $this->sentimentType, $this->file->getRealPath());
 
         $this->sentimentType = SentimentType::POSITIVE;
         $this->file = null;

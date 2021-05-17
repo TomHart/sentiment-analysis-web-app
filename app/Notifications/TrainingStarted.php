@@ -7,7 +7,6 @@ use App\Models\Brain;
 use App\Models\User;
 use App\View\Components\Notification\Builder;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use JetBrains\PhpStorm\ArrayShape;
 
@@ -70,20 +69,6 @@ class TrainingStarted extends Notification implements RenderableNotification
     public function via(User $notifiable): array
     {
         return ['database'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param User $notifiable
-     * @return MailMessage
-     */
-    public function toMail(User $notifiable): MailMessage
-    {
-        return (new MailMessage())
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
     }
 
     /**

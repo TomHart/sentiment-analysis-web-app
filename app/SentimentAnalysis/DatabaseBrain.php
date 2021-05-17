@@ -6,6 +6,7 @@ namespace App\SentimentAnalysis;
 use App\Models\Brain;
 use App\Models\Sentence;
 use App\Models\Word;
+use App\SentimentAnalysis\Memories\DatabaseLoader;
 use TomHart\SentimentAnalysis\Brain\Brain as AIBrain;
 use TomHart\SentimentAnalysis\Brain\BrainInterface;
 use TomHart\SentimentAnalysis\Memories\LoaderInterface;
@@ -17,25 +18,38 @@ use TomHart\SentimentAnalysis\Memories\NoopLoader;
  */
 class DatabaseBrain extends AIBrain
 {
-    /** @var Brain  */
-    private Brain $brain;
+    private ?Brain $brain;
 
-    /** @var Sentence  */
+    /** @var Sentence */
     private Sentence $currentSentence;
 
     /**
      * DatabaseBrain constructor.
-     * @param Brain $brain
+     * @param Brain|null $brain
      * @param LoaderInterface|null $loader
      */
-    public function __construct(Brain $brain, LoaderInterface $loader = null)
+    public function __construct(Brain $brain = null, LoaderInterface $loader = null)
     {
-        $this->brain = $brain;
-        if(is_null($loader)){
+        if (is_null($loader)) {
             $loader = new NoopLoader();
         }
 
+        if (!is_null($brain)) {
+            $this->brain = $brain;
+            $this->loadMemories($loader);
+        }
+    }
+
+    /**
+     * @param Brain $brain
+     * @return BrainInterface
+     */
+    public function setBrain(Brain $brain): BrainInterface
+    {
+        $this->brain = $brain;
+        $loader = new DatabaseLoader($brain);
         $this->loadMemories($loader);
+        return $this;
     }
 
     /**

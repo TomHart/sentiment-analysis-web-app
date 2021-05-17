@@ -44,6 +44,6 @@ class Notification extends Component
             return view('components.notifications.pop-up', $data);
         }
 
-        return view('components.notification');
+        return '';
     }
 }

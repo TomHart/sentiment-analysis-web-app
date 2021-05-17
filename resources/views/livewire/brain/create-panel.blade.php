@@ -1,4 +1,4 @@
-<x-jet-form-section submit="createBrain">
+<x-jet-form-section submit="create">
     <x-slot name="title">
         {{ __('Create Brain') }}
     </x-slot>
@@ -15,7 +15,7 @@
                 id="name"
                 type="text"
                 class="mt-1 block w-full"
-                wire:model.defer="createBrainForm.name"
+                wire:model.defer="name"
                 autofocus/>
             <x-jet-input-error for="name" class="mt-2"/>
         </div>

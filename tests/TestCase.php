@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 /**
@@ -38,16 +41,36 @@ abstract class TestCase extends BaseTestCase
                     if (count($aRecursiveDiff)) {
                         $aReturn[$mKey] = $aRecursiveDiff;
                     }
-                } else {
-                    if ($mValue !== $aArray2[$mKey]) {
-                        $aReturn[$mKey] = $mValue;
-                    }
+                    continue;
                 }
-            } else {
-                $aReturn[$mKey] = $mValue;
+
+                if ($mValue !== $aArray2[$mKey]) {
+                    $aReturn[$mKey] = $mValue;
+                }
+                continue;
             }
+
+            $aReturn[$mKey] = $mValue;
         }
 
         return $aReturn;
+    }
+
+    /**
+     * @param Model $model
+     * @param Collection $collection
+     */
+    protected static function assertModelInCollection(Model $model, Collection $collection): void
+    {
+        self::assertTrue($collection->contains('id', $model->id));
+    }
+
+    /**
+     * @param array $data
+     * @return User
+     */
+    public function createUser(array $data = []): User
+    {
+        return User::factory($data)->create();
     }
 }

@@ -30,7 +30,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Brain query()
  * @method static Builder|Brain whereCreatedAt($value)
  * @method static Builder|Brain whereId($value)
- * @method static Builder|Brain whereName($value)
+ * @method static Builder whereName($value)
  * @method static Builder|Brain whereUpdatedAt($value)
  * @mixin Eloquent
  * @property-read Collection|User[] $users

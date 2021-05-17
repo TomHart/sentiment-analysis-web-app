@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Providers;
 
@@ -14,6 +15,10 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use Laravel\Sanctum\Sanctum;
 
+/**
+ * Class FortifyServiceProvider
+ * @package App\Providers
+ */
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -39,11 +44,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(5)->by($request->email . $request->ip());
+            return Limit::perMinute(5)->by($request->email . $request->ip()); // @codeCoverageIgnore
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+            return Limit::perMinute(5)->by($request->session()->get('login.id')); // @codeCoverageIgnore
         });
 
         Sanctum::$personalAccessTokenModel = PersonalAccessToken::class;
