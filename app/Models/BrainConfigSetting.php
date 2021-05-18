@@ -30,8 +30,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|BrainConfigSetting whereType($value)
  * @method static Builder|BrainConfigSetting whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property string $default
+ * @method static Builder|BrainConfigSetting whereDefault($value)
  */
 class BrainConfigSetting extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

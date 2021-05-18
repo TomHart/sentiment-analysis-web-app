@@ -13,11 +13,6 @@
 
             <x-jet-section-border/>
 
-            <!-- Delete -->
-            <livewire:brain.delete-panel :brain="$brain"/>
-
-            <x-jet-section-border/>
-
             <!-- Training -->
             <livewire:brain.training-panel :brain="$brain"/>
 
@@ -25,6 +20,16 @@
 
             <!-- Use -->
             <livewire:brain.use-panel :brain="$brain"/>
+
+            <x-jet-section-border/>
+
+            <!-- Config -->
+            <livewire:brain.config-panel :brain="$brain"/>
+
+            <x-jet-section-border/>
+
+            <!-- Delete -->
+            <livewire:brain.delete-panel :brain="$brain"/>
         </div>
     </div>
 </x-app-layout>

@@ -82,10 +82,12 @@ class Brain extends Model
     }
 
     /**
-     * @return BelongsToMany
+     * @return HasMany
      */
-    public function config(): BelongsToMany
+    public function config(): HasMany
     {
-        return $this->belongsToMany(BrainConfigSetting::class, 'brain_config');
+        return $this->hasMany(
+            BrainConfig::class
+        );
     }
 }

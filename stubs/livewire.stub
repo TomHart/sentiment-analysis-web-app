@@ -6,10 +6,6 @@ namespace [namespace];
 use App\Http\Livewire\BaseComponent;
 use Illuminate\View\View;
 
-/**
- * Class [class]
- * @package [namespace]
- */
 class [class] extends BaseComponent
 {
     /**
