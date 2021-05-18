@@ -27,13 +27,17 @@ class Value implements Castable
              * @param $key
              * @param $value
              * @param $attributes
-             * @return mixed
+             * @return array|bool
              */
-            public function get($model, $key, $value, $attributes): mixed
+            public function get($model, $key, $value, $attributes): array|bool
             {
                 $setting = BrainConfigSetting::findOrFail($attributes['setting_id']);
                 return match ($setting->type) {
                     'toggle' => (bool)$attributes[$key],
+                    'raw' => match ($setting->config['type']) {
+                        'list' => array_filter(json_decode($attributes[$key], true, 512, JSON_THROW_ON_ERROR)),
+                        default => $attributes[$key]
+                    },
                     default => $attributes[$key],
                 };
             }
@@ -43,13 +47,17 @@ class Value implements Castable
              * @param $key
              * @param $value
              * @param $attributes
-             * @return bool[]
+             * @return array
              */
             public function set($model, $key, $value, $attributes): array
             {
                 $setting = BrainConfigSetting::findOrFail($attributes['setting_id']);
                 return [$key => match ($setting->type) {
                     'toggle' => $value ? '1' : '0',
+                    'raw' => match ($setting->config['type']) {
+                        'list' => $value === '[]' ? $value : json_encode(array_values(array_filter($value)), JSON_THROW_ON_ERROR),
+                        default => $attributes[$key]
+                    },
                     default => $value,
                 }];
             }

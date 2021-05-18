@@ -38,4 +38,8 @@ class BrainConfigSetting extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'config' => 'array'
+    ];
 }

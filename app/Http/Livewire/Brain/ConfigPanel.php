@@ -24,20 +24,22 @@ class ConfigPanel extends BaseComponent
      */
     public function mount(): void
     {
-        $this->settings = BrainConfigSetting::all()->keyBy('id')->toArray();
-        foreach ($this->settings as $setting) {
+        $settings = BrainConfigSetting::all()->keyBy('id');
+        foreach ($settings as $setting) {
 
             $config = $this->brain->config()->where('setting_id', $setting['id'])->first();
             if (is_null($config)) {
                 $config = new BrainConfig();
                 $config->brain()->associate($this->brain);
                 $config->setting()->associate($setting);
-                $config->value = $setting->default;
+                $config->value = $setting['default'];
                 $config->save();
             }
 
             $this->configs[] = $config->toArray();
         }
+
+        $this->settings = $settings->toArray();
     }
 
     /**
