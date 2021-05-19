@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\SentimentAnalysis\DatabaseBrain;
+use App\SentimentAnalysis\Memories\DatabaseLoader;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -11,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use TomHart\SentimentAnalysis\Brain\StopWords;
 
 /**
  * App\Models\Brain
@@ -37,6 +40,10 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $users_count
  * @property-read Collection|AnalysisResult[] $results
  * @property-read int|null $results_count
+ * @property-read Collection|BrainConfigSetting[] $config
+ * @property-read int|null $config_count
+ * @property-read Collection|\App\Models\BrainConfigSetting[] $settings
+ * @property-read int|null $settings_count
  */
 class Brain extends Model
 {
@@ -77,5 +84,52 @@ class Brain extends Model
     public function results(): HasMany
     {
         return $this->hasMany(AnalysisResult::class);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function settings(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(
+                BrainConfigSetting::class,
+                BrainConfig::class,
+                'brain_id',
+                'setting_id',
+            )
+            ->withPivot(['value'])
+            ->using(BrainConfig::class);
+    }
+
+    /**
+     * @return DatabaseBrain
+     */
+    public function toBrain(): DatabaseBrain
+    {
+        $brain = new DatabaseBrain($this, new DatabaseLoader($this));
+        $stopWords = [];
+
+        $settings = $this->settings;
+
+        foreach ($settings as $setting) {
+            $stopWords = match ($setting->name) {
+                'Use Default Stop Words' => array_merge($stopWords, StopWords::ENGLISH),
+                'Custom Stop Words' => array_merge($stopWords, $setting->pivot->value),
+            };
+        }
+
+        $brain->setStopWords($stopWords);
+        return $brain;
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function config(): HasMany
+    {
+        return $this->hasMany(
+            BrainConfig::class
+        );
     }
 }

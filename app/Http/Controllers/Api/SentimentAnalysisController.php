@@ -8,10 +8,9 @@ use App\Http\Requests\AnalysisRequest;
 use App\Models\AnalysisResult;
 use App\Models\PersonalAccessToken;
 use App\Models\User;
-use App\SentimentAnalysis\DatabaseBrain;
-use App\SentimentAnalysis\Memories\DatabaseLoader;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Response;
-use TomHart\SentimentAnalysis\Analyser\Analyser;
+use TomHart\SentimentAnalysis\Analyser\AnalyserInterface;
 
 /**
  * Class SentimentAnalysisController
@@ -22,6 +21,7 @@ class SentimentAnalysisController extends Controller
     /**
      * @param AnalysisRequest $request
      * @return Response
+     * @throws BindingResolutionException
      */
     public function analyse(AnalysisRequest $request): Response
     {
@@ -32,10 +32,11 @@ class SentimentAnalysisController extends Controller
         $token = $user->currentAccessToken();
         $brain = $token->brain;
 
-        $brain = new DatabaseBrain($brain, new DatabaseLoader($brain));
-
-        $analyser = new Analyser();
-        $analyser->setBrain($brain);
+        $analyser = app()->make(AnalyserInterface::class,
+            [
+                'brain' => $brain
+            ]
+        );
 
         $result = $analyser->analyse($request->input('text'));
 

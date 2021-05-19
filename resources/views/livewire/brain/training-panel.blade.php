@@ -34,6 +34,10 @@
     </x-slot>
 
     <x-slot name="actions">
+        <x-jet-action-message class="mr-3" on="cleaning-scheduled">
+            {{ __('Stop Word update scheduled. Please check your notifications for progress') }}
+        </x-jet-action-message>
+
         <x-jet-action-message class="mr-3" on="scheduled">
             {{ __('Training scheduled. Please check your notifications for progress') }}
         </x-jet-action-message>
@@ -45,6 +49,10 @@
         <div class="text-sm text-gray-600 mx-2" wire:loading wire:target="train">
             Starting Training
         </div>
+
+        <x-jet-button wire:loading.attr="disabled" class="mx-2" type="button" wire:click="removeStopWords">
+            {{ __('Update Stop Words') }}
+        </x-jet-button>
 
         <x-jet-button wire:loading.attr="disabled">
             {{ __('Train') }}

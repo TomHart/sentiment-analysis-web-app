@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Livewire\Brain;
 
 use App\Http\Livewire\BaseComponent;
+use App\Jobs\StopWordCleaning;
 use App\Jobs\TrainBrain;
 use App\Models\Brain;
 use Illuminate\Contracts\View\View;
@@ -41,6 +42,18 @@ class TrainingPanel extends BaseComponent
         $this->file = null;
 
         $this->emit('scheduled');
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function removeStopWords(): void
+    {
+        StopWordCleaning::dispatch($this->getUserProperty(), $this->brain);
+
+        $this->emit('cleaning-scheduled');
+        $this->emitTo('notification-bell', 'update');
+
     }
 
     /**
