@@ -17,11 +17,13 @@ class NotificationsController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $notifications = $user->notifications()->orderBy('created_at', 'DESC')->limit(50)->get();
 
         foreach ($user->unreadNotifications as $notification) {
             $notification->markAsRead();
         }
+
+        $notifications = $user->notifications()->orderBy('created_at', 'DESC')->limit(50)->get();
+
 
         return view('dashboard.notifications', [
             'notifications' => $notifications

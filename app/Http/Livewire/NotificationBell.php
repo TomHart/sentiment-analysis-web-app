@@ -11,6 +11,8 @@ use Illuminate\View\View;
  */
 class NotificationBell extends BaseComponent
 {
+    protected $listeners = ['update' => '$refresh'];
+
     public function render(): View
     {
         $user = $this->getUserProperty();

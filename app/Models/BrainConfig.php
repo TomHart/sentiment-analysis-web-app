@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Concerns\AsPivot;
 use Illuminate\Support\Carbon;
 
 /**
@@ -35,6 +36,8 @@ use Illuminate\Support\Carbon;
 class BrainConfig extends Model
 {
     use HasFactory;
+    use AsPivot;
+
     protected $table = 'brain_config';
 
     protected $guarded = [];
