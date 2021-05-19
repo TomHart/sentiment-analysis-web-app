@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Brain;
 use App\SentimentAnalysis\DatabaseBrain;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -24,15 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(BrainInterface::class, DatabaseBrain::class);
-
         $this->app->bind(AnalyserInterface::class, static function (
             Application $app,
-            #[ArrayShape(['brain' => BrainInterface::class])] array $params
+            #[ArrayShape(['brain' => Brain::class])] array $params
         ) {
-            /** @var DatabaseBrain $brain */
-            $brain = $app->make(BrainInterface::class, $params);
-            $brain->setBrain($params['brain']);
+            $brain = $params['brain']->toBrain();
 
             $analyser = new Analyser();
             return $analyser->setBrain($brain);
