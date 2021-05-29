@@ -46,6 +46,7 @@ class SentimentAnalysisController extends Controller
         $analysisResult->result = $result->getResult();
         $analysisResult->positive_accuracy = $result->getPositiveAccuracy();
         $analysisResult->negative_accuracy = $result->getNegativeAccuracy();
+        $analysisResult->workings = $result->getWorkings();
         $analysisResult->save();
 
         return response($result);

@@ -35,10 +35,16 @@ use Illuminate\Support\Carbon;
  * @method static Builder|AnalysisResult whereNegativeAccuracy($value)
  * @method static Builder|AnalysisResult wherePositiveAccuracy($value)
  * @property-read Brain $brain
+ * @property array $workings
+ * @method static Builder|AnalysisResult whereWorkings($value)
  */
 class AnalysisResult extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'workings' => 'array'
+    ];
 
     /**
      * @return BelongsTo
