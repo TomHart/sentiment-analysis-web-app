@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\BrainController;
 use App\Http\Controllers\Dashboard\NotificationsController;
+use App\Models\Brain;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get(
     '/',
     function () {
-        return view('welcome');
+        return view('welcome',
+            [
+                'brain' => Brain::where('name', 'Default Brain')->first()
+            ]
+        );
     }
 );
 

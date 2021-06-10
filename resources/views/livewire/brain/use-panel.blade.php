@@ -29,7 +29,6 @@
             </div>
         </x-slot>
 
-
         <x-slot name="actions">
             <x-jet-button>
                 {{ __('Test') }}
