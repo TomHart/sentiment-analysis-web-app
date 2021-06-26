@@ -18,7 +18,7 @@ class AddWorkingsToResults extends Migration
     public function up(): void
     {
         Schema::table('analysis_results', static function (Blueprint $table) {
-            $table->json('workings')->after('positive_accuracy');
+            $table->json('workings')->after('positive_accuracy')->default('{}');
         });
     }
 

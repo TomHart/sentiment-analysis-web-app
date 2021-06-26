@@ -3,11 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\AnalysisRequest;
 use App\Models\AnalysisResult;
-use App\Models\PersonalAccessToken;
-use App\Models\User;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Response;
 use TomHart\SentimentAnalysis\Analyser\AnalyserInterface;
@@ -16,7 +13,7 @@ use TomHart\SentimentAnalysis\Analyser\AnalyserInterface;
  * Class SentimentAnalysisController
  * @package App\Http\Controllers\Api
  */
-class SentimentAnalysisController extends Controller
+class SentimentAnalysisController extends AbstractApiController
 {
     /**
      * @param AnalysisRequest $request
@@ -25,12 +22,7 @@ class SentimentAnalysisController extends Controller
      */
     public function analyse(AnalysisRequest $request): Response
     {
-        /** @var User $user */
-        $user = $request->user();
-
-        /** @var PersonalAccessToken $token */
-        $token = $user->currentAccessToken();
-        $brain = $token->brain;
+        $brain = $this->getBrain($request);
 
         $analyser = app()->make(AnalyserInterface::class,
             [
@@ -42,7 +34,7 @@ class SentimentAnalysisController extends Controller
 
         $analysisResult = new AnalysisResult();
         $analysisResult->sentence = $request->input('text');
-        $analysisResult->brain()->associate($token->brain);
+        $analysisResult->brain()->associate($brain);
         $analysisResult->result = $result->getResult();
         $analysisResult->positive_accuracy = $result->getPositiveAccuracy();
         $analysisResult->negative_accuracy = $result->getNegativeAccuracy();

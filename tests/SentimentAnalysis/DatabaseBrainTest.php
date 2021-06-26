@@ -23,8 +23,7 @@ class DatabaseBrainTest extends TestCase
     private Brain|Model $defaultBrain;
     private DatabaseBrain $sut;
 
-
-    public function testTrainingTheBrain(): void
+    public function test_training_the_brain(): void
     {
         $file = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'test.txt');
         $this->sut->insertTrainingData($file, SentimentType::POSITIVE, 1000);
@@ -50,42 +49,17 @@ class DatabaseBrainTest extends TestCase
         $expectedWords = [
             [
                 'id' => 1,
-                'word' => 'that',
-                'sentiment' => SentimentType::POSITIVE,
-                'sentence_id' => '1'
-            ],
-            [
-                'id' => 2,
-                'word' => 'was',
-                'sentiment' => SentimentType::POSITIVE,
-                'sentence_id' => '1'
-            ],
-            [
-                'id' => 3,
                 'word' => 'amazing',
                 'sentiment' => SentimentType::POSITIVE,
                 'sentence_id' => '1'
             ],
             [
-                'id' => 4,
-                'word' => 'this',
-                'sentiment' => SentimentType::POSITIVE,
-                'sentence_id' => '2'
-            ],
-            [
-                'id' => 5,
-                'word' => 'is',
-                'sentiment' => SentimentType::POSITIVE,
-                'sentence_id' => '2'
-            ],
-            [
-                'id' => 6,
+                'id' => 2,
                 'word' => 'great',
                 'sentiment' => SentimentType::POSITIVE,
                 'sentence_id' => '2'
             ]
         ];
-
 
         // For ignoring timestamps
         static::assertDiffEmpty($expectedSentences, $sentences->toArray());
