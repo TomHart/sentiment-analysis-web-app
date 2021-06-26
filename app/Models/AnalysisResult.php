@@ -46,6 +46,15 @@ class AnalysisResult extends Model
         'workings' => 'array'
     ];
 
+    protected $fillable = [
+        'sentence',
+        'brain_id',
+        'result',
+        'positive_accuracy',
+        'negative_accuracy',
+        'workings'
+    ];
+
     /**
      * @return BelongsTo
      */

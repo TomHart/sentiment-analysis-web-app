@@ -30,16 +30,18 @@ class SentimentAnalysisController extends AbstractApiController
             ]
         );
 
-        $result = $analyser->analyse($request->input('text'));
+        $text = $request->input('text');
 
-        $analysisResult = new AnalysisResult();
-        $analysisResult->sentence = $request->input('text');
-        $analysisResult->brain()->associate($brain);
-        $analysisResult->result = $result->getResult();
-        $analysisResult->positive_accuracy = $result->getPositiveAccuracy();
-        $analysisResult->negative_accuracy = $result->getNegativeAccuracy();
-        $analysisResult->workings = $result->getWorkings();
-        $analysisResult->save();
+        $result = $analyser->analyse($text);
+
+        (new AnalysisResult([
+            'sentence' => $text,
+            'brain_id' => $brain->id,
+            'result' => $result->getResult(),
+            'positive_accuracy' => $result->getPositiveAccuracy(),
+            'negative_accuracy' => $result->getNegativeAccuracy(),
+            'workings' => $result->getWorkings(),
+        ]))->save();
 
         return response($result);
     }
