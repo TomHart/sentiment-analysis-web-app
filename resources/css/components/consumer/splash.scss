@@ -1,0 +1,39 @@
+.site-splash {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-areas:
+        'img title'
+        'img description';
+
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.site-splash--right {
+    grid-template-areas:
+        'title img'
+        'description img';
+
+    grid-template-columns: 3fr 2fr;
+    padding-left: 2em;
+}
+
+.site-splash__img {
+    grid-area: img;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.site-splash__title {
+    @apply text-5xl;
+
+    grid-area: title;
+    align-self: end;
+}
+
+.site-splash__description {
+    @apply text-3xl;
+
+    grid-area: description;
+}

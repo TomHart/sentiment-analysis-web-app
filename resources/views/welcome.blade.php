@@ -1,45 +1,40 @@
 <x-consumer-layout>
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
+    <x-login-float/>
 
+    <div class="site-splash bg-gray-100">
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-gray-700">
-            <h1 class="text-5xl my-8">Think What</h1>
+        <img class="site-splash__img" src="{{url('img/question_mark.jpg')}}"/>
 
-            <div class="bg-white p-8 shadow rounded">
-                <p class="text-4xl">
-                    Think What is a sentiment analysis platform.
-                </p>
+        <p class="site-splash__title">
+            Think What is a sentiment analysis platform.
+        </p>
+    </div>
 
-                {{-- TODO: Animate business/product/brand to be words that switch out --}}
-                <p class="text-xl my-6">
-                    You can get insight into how people feel about your business, product, or brand.
-                </p>
+    <div class="site-splash site-splash--right bg-blue-100">
 
-                <p class="text-xl my-6">
-                    We use artificial intelligence to analysis text, and automatically determine whether people are
-                    talking positively or negatively about you.
-                </p>
+        <img class="site-splash__img" src="{{url('img/thinking.jpg')}}"/>
 
-                <div class="text-xl my-6">
-                    Try it out.
+        <p class="site-splash__title">
+            You can get insight into how people feel about your business, product, or brand.
+        </p>
+    </div>
 
-                    <livewire:use-brain :brain="$brain" />
-                </div>
-            </div>
-        </div>
+    <div class="site-splash bg-yellow-50">
+
+        <img class="site-splash__img" src="{{url('img/ai.jpg')}}"/>
+
+        <p class="site-splash__title">
+            We use artificial intelligence to analysis text, and automatically determine whether people are
+            saying positive or negative things.
+        </p>
+    </div>
+
+    <div class="bg-purple-100 px-16 py-32">
+        <p class="text-3xl">
+            Try it out.
+        </p>
+
+        <livewire:use-brain :brain="$brain"/>
     </div>
 </x-consumer-layout>

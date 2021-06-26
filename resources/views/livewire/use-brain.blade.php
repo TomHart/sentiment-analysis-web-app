@@ -5,7 +5,7 @@
         class="mt-1 block w-full"
         wire:model="sentence"
         wire:keydown.enter="useBrain"
-        autofocus/>
+        />
 
     <x-jet-input-error for="sentence" class="mt-2"/>
 
