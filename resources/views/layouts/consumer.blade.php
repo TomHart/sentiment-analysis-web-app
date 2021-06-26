@@ -20,6 +20,8 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="antialiased">
+@livewire('consumer.navigation-menu')
+
 {{ $slot }}
 
 @livewireScripts

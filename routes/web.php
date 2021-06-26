@@ -17,17 +17,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get(
-    '/',
-    function () {
-        return view('welcome',
-            [
-                'brain' => Brain::where('name', 'Default Brain')->first()
-            ]
-        );
-    }
-);
+Route::group([
+    'as' => 'consumer.'
+],
+    static function () {
+        Route
+            ::get(
+                '/',
+                static function () {
+                    return view('welcome',
+                        [
+                            'brain' => Brain::where('name', 'Default Brain')->first()
+                        ]
+                    );
+                }
+            )
+            ->name('index');
 
+        Route
+            ::get(
+                '/contact',
+                static function () {
+                    return 'Coming...';
+                }
+            )
+            ->name('contact');
+    });
 
 Route
     ::middleware(['auth:sanctum', 'verified'])
