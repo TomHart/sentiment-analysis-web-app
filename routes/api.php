@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\BrainTrainingController;
 use App\Http\Controllers\Api\SentimentAnalysisController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(static function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-
     Route::get('analyse', [SentimentAnalysisController::class, 'analyse'])->name('analyse');
+    Route::get('train', [BrainTrainingController::class, 'train'])->name('train');
 });

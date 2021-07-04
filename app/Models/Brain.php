@@ -42,7 +42,7 @@ use TomHart\SentimentAnalysis\Brain\StopWords;
  * @property-read int|null $results_count
  * @property-read Collection|BrainConfigSetting[] $config
  * @property-read int|null $config_count
- * @property-read Collection|\App\Models\BrainConfigSetting[] $settings
+ * @property-read Collection|BrainConfigSetting[] $settings
  * @property-read int|null $settings_count
  */
 class Brain extends Model

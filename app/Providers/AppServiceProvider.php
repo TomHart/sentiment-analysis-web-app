@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        \DB::enableQueryLog();
         $this->app->bind(
             AnalyserInterface::class,
             fn(Application $app, $params) => new Analyser($params['brain']->toBrain())

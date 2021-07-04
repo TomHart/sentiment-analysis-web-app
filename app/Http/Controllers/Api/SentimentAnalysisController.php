@@ -16,6 +16,11 @@ use TomHart\SentimentAnalysis\Analyser\AnalyserInterface;
 class SentimentAnalysisController extends AbstractApiController
 {
     /**
+     * Analyse a message
+     *
+     * This endpoint allows you to analyse a message using a trained brain.
+     * <aside class="notice">The brain used is the one linked to your API key</aside>
+     *
      * @param AnalysisRequest $request
      * @return Response
      * @throws BindingResolutionException
