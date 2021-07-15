@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(static function () {
     Route::get('analyse', [SentimentAnalysisController::class, 'analyse'])->name('analyse');
     Route::get('train', [BrainTrainingController::class, 'train'])->name('train');
+    Route::get('stop-words', [BrainTrainingController::class, 'addStopWord'])->name('stop-words');
 });

@@ -27,7 +27,7 @@ class SentimentAnalysisController extends AbstractApiController
      */
     public function analyse(AnalysisRequest $request): Response
     {
-        $brain = $this->getBrain($request);
+        $brain = $this->getBrainModel($request);
 
         $analyser = app()->make(AnalyserInterface::class,
             [

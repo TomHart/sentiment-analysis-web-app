@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\BrainTrainingRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use TomHart\SentimentAnalysis\Brain\StopWords;
 use TomHart\SentimentAnalysis\SentimentType;
 
 /**
@@ -23,24 +25,34 @@ class BrainTrainingController extends AbstractApiController
      */
     public function train(BrainTrainingRequest $request): Response
     {
-        $brain = $this->getBrain($request);
+        $brain = $this->getDatabaseBrain($request);
 
         $text = $request->input('text');
         $sentiment = $request->input('sentiment');
 
-        $brain->toBrain()->insertTrainingSentence($text, $sentiment);
+        $brain->insertTrainingSentence($text, $sentiment);
 
         return response([
-            'total_words' => $brain->toBrain()->getWordCount(),
-            'positive_words' => $brain->toBrain()->getWordTypeCount(SentimentType::POSITIVE),
-            'negative_words' => $brain->toBrain()->getWordTypeCount(SentimentType::NEGATIVE),
+            'total_words' => $brain->getWordCount(),
+            'positive_words' => $brain->getWordTypeCount(SentimentType::POSITIVE),
+            'negative_words' => $brain->getWordTypeCount(SentimentType::NEGATIVE),
         ]);
     }
 
-    public function addStopWord(BrainTrainingRequest $request)
+    public function addStopWord(Request $request)
     {
-        $brain = $this->getBrain($request);
+        $brain = $this->getBrainModel($request);
 
-        //
+        $settings = $brain->settings;
+        $stopWords = [];
+
+        foreach ($settings as $setting) {
+            $stopWords = match ($setting->name) {
+                'Use Default Stop Words' => array_merge($stopWords, StopWords::ENGLISH),
+                'Custom Stop Words' => array_merge($stopWords, $setting->pivot->value),
+            };
+        }
+
+        dump($settings, $stopWords);
     }
 }
